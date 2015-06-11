@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Image_As_Wallpaper" customModuleProvider="target">
             <connections>
                 <outlet property="contentViewController" destination="nbQ-fq-WbK" id="Ero-G3-q4P"/>
+                <outlet property="screenDimensionsText" destination="B6C-ac-fxB" id="evC-z8-d0G"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -669,12 +670,31 @@
         </menu>
         <window title="Image As Wallpaper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="72" y="329" width="768" height="480"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="768" height="480"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="768" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-ac-fxB">
+                        <rect key="frame" x="18" y="443" width="358" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="354" id="2ps-Um-HXA"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Screen Dimensions:" usesSingleLineMode="YES" id="btV-tL-fVr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="B6C-ac-fxB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="9ZJ-Hd-TQN"/>
+                    <constraint firstItem="B6C-ac-fxB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="n2N-Kf-EIO"/>
+                </constraints>
             </view>
         </window>
         <viewController id="nbQ-fq-WbK" customClass="ContentViewController" customModule="Image_As_Wallpaper" customModuleProvider="target"/>

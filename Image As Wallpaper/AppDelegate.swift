@@ -14,9 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     @IBOutlet weak var contentViewController: ContentViewController!
+
+    @IBOutlet weak var screenDimensionsText: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-
+        showScreenSize()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -25,6 +27,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true
+    }
+
+    func showScreenSize() {
+        let screenSize = getScreenSize(window)
+        var handyString = "Screen: \(Int(screenSize.width)) x \(Int(screenSize.height))"
+        handyString = handyString.stringByAppendingFormat("  Aspect ratio: %1.2f", screenSize.width / screenSize.height)
+        screenDimensionsText.stringValue = handyString
+    }
+
+    func applicationDidChangeScreenParameters(notification: NSNotification) {
+        showScreenSize()
     }
 
 }
