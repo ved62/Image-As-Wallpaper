@@ -32,6 +32,7 @@
 		99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Image As WallpaperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99214C091B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_As_WallpaperTests.swift; sourceTree = "<group>"; };
+		99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Image As Wallpaper.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 		99214BF61B299FBF008D23C4 /* Image As Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */,
 				99214BF91B299FBF008D23C4 /* AppDelegate.swift */,
 				99214BFB1B299FBF008D23C4 /* Images.xcassets */,
 				99214BFD1B299FBF008D23C4 /* MainMenu.xib */,
@@ -155,6 +157,11 @@
 				TargetAttributes = {
 					99214BF31B299FBF008D23C4 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					99214C031B299FBF008D23C4 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -323,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Image As Wallpaper/Image As Wallpaper.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Image As Wallpaper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -334,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Image As Wallpaper/Image As Wallpaper.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Image As Wallpaper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
