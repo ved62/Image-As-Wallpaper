@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99214BFA1B299FBF008D23C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214BF91B299FBF008D23C4 /* AppDelegate.swift */; };
+		99214BFC1B299FBF008D23C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFB1B299FBF008D23C4 /* Images.xcassets */; };
+		99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFD1B299FBF008D23C4 /* MainMenu.xib */; };
+		99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		99214C051B299FBF008D23C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99214BEC1B299FBF008D23C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99214BF31B299FBF008D23C4;
+			remoteInfo = "Image As Wallpaper";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image As Wallpaper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99214BF81B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99214BF91B299FBF008D23C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99214BFB1B299FBF008D23C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		99214BFE1B299FBF008D23C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Image As WallpaperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99214C091B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_As_WallpaperTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99214BF11B299FBF008D23C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99214C011B299FBF008D23C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99214BEB1B299FBF008D23C4 = {
+			isa = PBXGroup;
+			children = (
+				99214BF61B299FBF008D23C4 /* Image As Wallpaper */,
+				99214C071B299FBF008D23C4 /* Image As WallpaperTests */,
+				99214BF51B299FBF008D23C4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		99214BF51B299FBF008D23C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */,
+				99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99214BF61B299FBF008D23C4 /* Image As Wallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				99214BF91B299FBF008D23C4 /* AppDelegate.swift */,
+				99214BFB1B299FBF008D23C4 /* Images.xcassets */,
+				99214BFD1B299FBF008D23C4 /* MainMenu.xib */,
+				99214BF71B299FBF008D23C4 /* Supporting Files */,
+			);
+			path = "Image As Wallpaper";
+			sourceTree = "<group>";
+		};
+		99214BF71B299FBF008D23C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				99214BF81B299FBF008D23C4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99214C071B299FBF008D23C4 /* Image As WallpaperTests */ = {
+			isa = PBXGroup;
+			children = (
+				99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */,
+				99214C081B299FBF008D23C4 /* Supporting Files */,
+			);
+			path = "Image As WallpaperTests";
+			sourceTree = "<group>";
+		};
+		99214C081B299FBF008D23C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				99214C091B299FBF008D23C4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99214BF31B299FBF008D23C4 /* Image As Wallpaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99214C0E1B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As Wallpaper" */;
+			buildPhases = (
+				99214BF01B299FBF008D23C4 /* Sources */,
+				99214BF11B299FBF008D23C4 /* Frameworks */,
+				99214BF21B299FBF008D23C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Image As Wallpaper";
+			productName = "Image As Wallpaper";
+			productReference = 99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		99214C031B299FBF008D23C4 /* Image As WallpaperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99214C111B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As WallpaperTests" */;
+			buildPhases = (
+				99214C001B299FBF008D23C4 /* Sources */,
+				99214C011B299FBF008D23C4 /* Frameworks */,
+				99214C021B299FBF008D23C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99214C061B299FBF008D23C4 /* PBXTargetDependency */,
+			);
+			name = "Image As WallpaperTests";
+			productName = "Image As WallpaperTests";
+			productReference = 99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99214BEC1B299FBF008D23C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Vladislav Dembskiy";
+				TargetAttributes = {
+					99214BF31B299FBF008D23C4 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					99214C031B299FBF008D23C4 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 99214BF31B299FBF008D23C4;
+					};
+				};
+			};
+			buildConfigurationList = 99214BEF1B299FBF008D23C4 /* Build configuration list for PBXProject "Image As Wallpaper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 99214BEB1B299FBF008D23C4;
+			productRefGroup = 99214BF51B299FBF008D23C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99214BF31B299FBF008D23C4 /* Image As Wallpaper */,
+				99214C031B299FBF008D23C4 /* Image As WallpaperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99214BF21B299FBF008D23C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99214BFC1B299FBF008D23C4 /* Images.xcassets in Resources */,
+				99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99214C021B299FBF008D23C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99214BF01B299FBF008D23C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99214BFA1B299FBF008D23C4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99214C001B299FBF008D23C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		99214C061B299FBF008D23C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99214BF31B299FBF008D23C4 /* Image As Wallpaper */;
+			targetProxy = 99214C051B299FBF008D23C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		99214BFD1B299FBF008D23C4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99214BFE1B299FBF008D23C4 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99214C0C1B299FBF008D23C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		99214C0D1B299FBF008D23C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		99214C0F1B299FBF008D23C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Image As Wallpaper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		99214C101B299FBF008D23C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Image As Wallpaper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		99214C121B299FBF008D23C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Image As WallpaperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image As Wallpaper.app/Contents/MacOS/Image As Wallpaper";
+			};
+			name = Debug;
+		};
+		99214C131B299FBF008D23C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Image As WallpaperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image As Wallpaper.app/Contents/MacOS/Image As Wallpaper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99214BEF1B299FBF008D23C4 /* Build configuration list for PBXProject "Image As Wallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99214C0C1B299FBF008D23C4 /* Debug */,
+				99214C0D1B299FBF008D23C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99214C0E1B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As Wallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99214C0F1B299FBF008D23C4 /* Debug */,
+				99214C101B299FBF008D23C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		99214C111B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As WallpaperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99214C121B299FBF008D23C4 /* Debug */,
+				99214C131B299FBF008D23C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99214BEC1B299FBF008D23C4 /* Project object */;
+}
