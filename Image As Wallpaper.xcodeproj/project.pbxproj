@@ -11,6 +11,7 @@
 		99214BFC1B299FBF008D23C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFB1B299FBF008D23C4 /* Images.xcassets */; };
 		99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFD1B299FBF008D23C4 /* MainMenu.xib */; };
 		99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */; };
+		99214C1E1B29D132008D23C4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C1D1B29D132008D23C4 /* ContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		99214C091B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_As_WallpaperTests.swift; sourceTree = "<group>"; };
 		99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Image As Wallpaper.entitlements"; sourceTree = "<group>"; };
+		99214C1D1B29D132008D23C4 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +76,9 @@
 		99214BF61B299FBF008D23C4 /* Image As Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				99214C1F1B29DE90008D23C4 /* GUI */,
 				99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */,
-				99214BF91B299FBF008D23C4 /* AppDelegate.swift */,
 				99214BFB1B299FBF008D23C4 /* Images.xcassets */,
-				99214BFD1B299FBF008D23C4 /* MainMenu.xib */,
 				99214BF71B299FBF008D23C4 /* Supporting Files */,
 			);
 			path = "Image As Wallpaper";
@@ -106,6 +107,16 @@
 				99214C091B299FBF008D23C4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99214C1F1B29DE90008D23C4 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				99214BFD1B299FBF008D23C4 /* MainMenu.xib */,
+				99214BF91B299FBF008D23C4 /* AppDelegate.swift */,
+				99214C1D1B29D132008D23C4 /* ContentViewController.swift */,
+			);
+			name = GUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99214C1E1B29D132008D23C4 /* ContentViewController.swift in Sources */,
 				99214BFA1B299FBF008D23C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
