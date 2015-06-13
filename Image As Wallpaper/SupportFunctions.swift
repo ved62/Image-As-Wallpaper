@@ -8,19 +8,6 @@
 
 import AppKit
 
-func selectFilesDialog () -> [NSURL] {
-    let fileDialog = NSOpenPanel()
-    fileDialog.title = "Select Image Files and Directories"
-    fileDialog.allowedFileTypes = NSImage.imageTypes()
-    fileDialog.allowsMultipleSelection=true
-    fileDialog.canChooseDirectories=true
-    fileDialog.canChooseFiles=true
-    if fileDialog.runModal() == NSFileHandlingPanelOKButton {
-        return fileDialog.URLs as! [NSURL]
-    }
-    return []
-}
-
 func getDestinationPath() -> [NSURL] {
     let movePanel = NSOpenPanel()
     movePanel.message = "Select Destination"
@@ -46,14 +33,6 @@ func isImageFile(url: NSURL) -> Bool {
         }
     }
     return false
-}
-
-func getScreenSize(window: NSWindow) -> CGSize {
-    let screen = window.screen
-    if screen == nil {
-        fatalError("Current screen dimensions unknown!")
-    }
-    return screen!.frame.size
 }
 
 func fileOperationFailureAlert(error: NSError) {

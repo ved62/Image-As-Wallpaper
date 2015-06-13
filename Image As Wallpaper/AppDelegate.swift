@@ -12,33 +12,30 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var appController: AppController!    
+    @IBOutlet weak var stepper: NSStepper!
 
-    @IBOutlet weak var contentViewController: ContentViewController!
-
-    @IBOutlet weak var screenDimensionsText: NSTextField!
-    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        showScreenSize()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let conformityLevel = defaults.doubleForKey("conformityLevel")
+        if conformityLevel > 0.0 {
+            appController.conformityLevel = conformityLevel
+        } else { // first run
+            appController.conformityLevel = stepper.doubleValue
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setDouble(appController.conformityLevel, forKey: "conformityLevel")
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true
     }
 
-    func showScreenSize() {
-        let screenSize = getScreenSize(window)
-        var handyString = "Screen: \(Int(screenSize.width)) x \(Int(screenSize.height))"
-        handyString = handyString.stringByAppendingFormat("  Aspect ratio: %1.2f", screenSize.width / screenSize.height)
-        screenDimensionsText.stringValue = handyString
-    }
-
     func applicationDidChangeScreenParameters(notification: NSNotification) {
-        showScreenSize()
+        appController.screenSize = window.screen!.frame.size
     }
-
 }
 

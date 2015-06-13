@@ -13,12 +13,18 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Image_As_Wallpaper" customModuleProvider="target">
             <connections>
-                <outlet property="contentViewController" destination="nbQ-fq-WbK" id="Ero-G3-q4P"/>
-                <outlet property="screenDimensionsText" destination="B6C-ac-fxB" id="evC-z8-d0G"/>
+                <outlet property="appController" destination="yew-4J-T1z" id="vFg-um-ggE"/>
+                <outlet property="stepper" destination="zwe-g0-ojS" id="DxF-j5-Wi3"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
+        <customObject id="yew-4J-T1z" customClass="AppController" customModule="Image_As_Wallpaper" customModuleProvider="target">
+            <connections>
+                <outlet property="dataLoad" destination="vqF-LT-3ws" id="3PD-xm-a2v"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="vqF-LT-3ws" customClass="DataLoad" customModule="Image_As_Wallpaper" customModuleProvider="target"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Image As Wallpaper" id="1Xt-HY-uBw">
@@ -679,24 +685,97 @@
                 <rect key="frame" x="0.0" y="0.0" width="768" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-ac-fxB">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-ac-fxB">
                         <rect key="frame" x="18" y="443" width="358" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="354" id="2ps-Um-HXA"/>
-                        </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Screen Dimensions:" usesSingleLineMode="YES" id="btV-tL-fVr">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="yew-4J-T1z" name="value" keyPath="screenDimensions" id="z6W-cG-2Va"/>
+                        </connections>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pd4-6L-E9a">
+                        <rect key="frame" x="18" y="409" width="108" height="17"/>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Conformity level:" usesSingleLineMode="YES" id="Ig2-Re-ivU">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5G-Jr-cwC">
+                        <rect key="frame" x="127" y="407" width="46" height="20"/>
+                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="98%" drawsBackground="YES" usesSingleLineMode="YES" id="pNY-q5-Tur">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="###%" numberStyle="percent" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="100" id="8PT-Co-HOd">
+                                <integer key="multiplier" value="100"/>
+                                <real key="minimum" value="0.90000000000000002"/>
+                                <real key="maximum" value="1"/>
+                                <metadata>
+                                    <real key="inspectorSampleValue" value="0.0"/>
+                                </metadata>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="yew-4J-T1z" name="value" keyPath="conformityLevel" id="5Ah-Bx-nSU"/>
+                        </connections>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwe-g0-ojS">
+                        <rect key="frame" x="173" y="403" width="19" height="27"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" increment="0.01" minValue="0.90000000000000002" maxValue="1" doubleValue="0.97999999999999998" valueWraps="YES" id="HCi-oP-Kn2"/>
+                        <connections>
+                            <binding destination="yew-4J-T1z" name="value" keyPath="conformityLevel" id="edS-oj-1i2"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZi-jd-d1h">
+                        <rect key="frame" x="214" y="400" width="60" height="34"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Look in Subdirs?" id="n4Y-aS-cHX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zId-Tf-XQj">
+                        <rect key="frame" x="275" y="398" width="47" height="38"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <size key="cellSize" width="44" height="18"/>
+                        <size key="intercellSpacing" width="4" height="2"/>
+                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" state="on" tag="3" inset="2" id="hDo-r1-1Sx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <cells>
+                            <column>
+                                <buttonCell type="radio" title="Yes" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="Tlx-VM-hDW">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="radio" title="No" imagePosition="left" alignment="left" inset="2" id="467-nX-9DN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                        </cells>
+                        <connections>
+                            <binding destination="yew-4J-T1z" name="selectedTag" keyPath="lookInSubDirs" id="pRx-xf-4An"/>
+                        </connections>
+                    </matrix>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-JN-Cb1">
+                        <rect key="frame" x="376" y="404" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Select Files" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ihf-HM-xKo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectFiles:" target="yew-4J-T1z" id="3A2-y5-eDK"/>
+                        </connections>
+                    </button>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="B6C-ac-fxB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="9ZJ-Hd-TQN"/>
-                    <constraint firstItem="B6C-ac-fxB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="n2N-Kf-EIO"/>
-                </constraints>
             </view>
+            <point key="canvasLocation" x="1154" y="340"/>
         </window>
-        <viewController id="nbQ-fq-WbK" customClass="ContentViewController" customModule="Image_As_Wallpaper" customModuleProvider="target"/>
     </objects>
 </document>
