@@ -11,26 +11,36 @@
 import Cocoa
 
 @IBDesignable
-class AppController: NSObject {
+final class AppController: NSObject {
     
-    @IBOutlet weak var  dataLoad: DataLoad!
+    private dynamic var screenDimensions = String()
+    dynamic var conformityLevel: Double = 0.98 {
+        didSet {
+            progressIndicator.startAnimation(self)
+            dataController.sortImagesInDataSources()
+            progressIndicator.stopAnimation(self)
+        }
+    }
 
-    private dynamic var screenDimensions: String = ""
-    dynamic var conformityLevel: Double = 0.98
     dynamic var lookInSubDirs: Int = 1
 
     var screenSize: CGSize {
         get { return NSScreen.mainScreen()!.frame.size }
         set { updateScreenDimensions(newValue, string: &screenDimensions) }
     }
+    
+    @IBOutlet weak var dataController: DataController!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
-    private func updateScreenDimensions(screenSize: CGSize, inout string: String) {
-        string = "Screen Dimensions: \(Int(screenSize.width)) x \(Int(screenSize.height))"
-        string = string.stringByAppendingFormat("  Aspect ratio: %1.2f", screenSize.width / screenSize.height)
+    private func updateScreenDimensions(size: CGSize, inout string: String) {
+        string = "Screen Dimensions: \(Int(size.width)) x \(Int(size.height)) "
+        string = string.stringByAppendingFormat(" Aspect ratio: %1.2f", size.width / size.height)
     }
-
+    
     @IBAction func selectFiles(sender: AnyObject) {
-        dataLoad!.selectAndLoadFIlesToDataSources()
+        progressIndicator.startAnimation(self)
+        dataController.selectFiles()
+        progressIndicator.stopAnimation(self)
     }
 
     override init() {

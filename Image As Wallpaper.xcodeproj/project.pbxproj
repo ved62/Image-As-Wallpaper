@@ -12,7 +12,9 @@
 		99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFD1B299FBF008D23C4 /* MainMenu.xib */; };
 		99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */; };
 		99214C211B29E7B0008D23C4 /* SupportFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C201B29E7B0008D23C4 /* SupportFunctions.swift */; };
-		993A24881B2C8A9F00148445 /* DataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993A24871B2C8A9F00148445 /* DataLoad.swift */; };
+		999815291B2DE736009EA519 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999815281B2DE736009EA519 /* DataController.swift */; };
+		9998152C1B2DE7B5009EA519 /* ImageBrowserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998152A1B2DE7B5009EA519 /* ImageBrowserDataSource.swift */; };
+		9998152D1B2DE7B5009EA519 /* ImageBrowserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998152B1B2DE7B5009EA519 /* ImageBrowserItem.swift */; };
 		99F376151B2C13EF00C340B4 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F376141B2C13EF00C340B4 /* AppController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,9 @@
 		99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_As_WallpaperTests.swift; sourceTree = "<group>"; };
 		99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Image As Wallpaper.entitlements"; sourceTree = "<group>"; };
 		99214C201B29E7B0008D23C4 /* SupportFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportFunctions.swift; sourceTree = "<group>"; };
-		993A24871B2C8A9F00148445 /* DataLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoad.swift; sourceTree = "<group>"; };
+		999815281B2DE736009EA519 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		9998152A1B2DE7B5009EA519 /* ImageBrowserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserDataSource.swift; sourceTree = "<group>"; };
+		9998152B1B2DE7B5009EA519 /* ImageBrowserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserItem.swift; sourceTree = "<group>"; };
 		99F376141B2C13EF00C340B4 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +84,7 @@
 		99214BF61B299FBF008D23C4 /* Image As Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
-				993A24871B2C8A9F00148445 /* DataLoad.swift */,
+				999815271B2DD269009EA519 /* DataModel */,
 				99214C201B29E7B0008D23C4 /* SupportFunctions.swift */,
 				99214C1F1B29DE90008D23C4 /* GUI */,
 				99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */,
@@ -123,6 +127,16 @@
 				99214BF91B299FBF008D23C4 /* AppDelegate.swift */,
 			);
 			name = GUI;
+			sourceTree = "<group>";
+		};
+		999815271B2DD269009EA519 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				999815281B2DE736009EA519 /* DataController.swift */,
+				9998152A1B2DE7B5009EA519 /* ImageBrowserDataSource.swift */,
+				9998152B1B2DE7B5009EA519 /* ImageBrowserItem.swift */,
+			);
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,9 +244,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				99214C211B29E7B0008D23C4 /* SupportFunctions.swift in Sources */,
+				999815291B2DE736009EA519 /* DataController.swift in Sources */,
 				99214BFA1B299FBF008D23C4 /* AppDelegate.swift in Sources */,
+				9998152D1B2DE7B5009EA519 /* ImageBrowserItem.swift in Sources */,
+				9998152C1B2DE7B5009EA519 /* ImageBrowserDataSource.swift in Sources */,
 				99F376151B2C13EF00C340B4 /* AppController.swift in Sources */,
-				993A24881B2C8A9F00148445 /* DataLoad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

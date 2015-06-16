@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,11 +21,21 @@
         </customObject>
         <customObject id="yew-4J-T1z" customClass="AppController" customModule="Image_As_Wallpaper" customModuleProvider="target">
             <connections>
-                <outlet property="dataLoad" destination="vqF-LT-3ws" id="3PD-xm-a2v"/>
+                <outlet property="dataController" destination="ka9-He-PNk" id="1ql-NH-wDW"/>
+                <outlet property="progressIndicator" destination="vPJ-Xa-wUL" id="hDh-A1-Yb3"/>
+            </connections>
+        </customObject>
+        <customObject id="ka9-He-PNk" customClass="DataController" customModule="Image_As_Wallpaper" customModuleProvider="target">
+            <connections>
+                <outlet property="appController" destination="yew-4J-T1z" id="KNU-68-s4Y"/>
+                <outlet property="badImageView" destination="HW6-4p-2Uv" id="TTA-v9-ZFm"/>
+                <outlet property="badTabViewItem" destination="OeO-fn-Vuh" id="sLY-P9-UUr"/>
+                <outlet property="goodImageView" destination="45K-Uv-Z1F" id="6Gi-Rf-Syc"/>
+                <outlet property="goodTabViewItem" destination="Ro2-lv-1tW" id="L9d-Ed-zQy"/>
+                <outlet property="tabView" destination="8Fj-MS-dlc" id="PHK-o6-jj1"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="vqF-LT-3ws" customClass="DataLoad" customModule="Image_As_Wallpaper" customModuleProvider="target"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Image As Wallpaper" id="1Xt-HY-uBw">
@@ -80,9 +91,9 @@
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                            <menuItem title="Select…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                    <action selector="selectFiles:" target="yew-4J-T1z" id="gwi-wE-XIo"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -681,7 +692,7 @@
             <rect key="contentRect" x="72" y="329" width="768" height="480"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="768" height="480"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="768" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -730,16 +741,8 @@
                             <binding destination="yew-4J-T1z" name="value" keyPath="conformityLevel" id="edS-oj-1i2"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZi-jd-d1h">
-                        <rect key="frame" x="214" y="400" width="60" height="34"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Look in Subdirs?" id="n4Y-aS-cHX">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zId-Tf-XQj">
-                        <rect key="frame" x="275" y="398" width="47" height="38"/>
+                        <rect key="frame" x="275" y="397" width="47" height="38"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         <size key="cellSize" width="44" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
@@ -764,7 +767,7 @@
                         </connections>
                     </matrix>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-JN-Cb1">
-                        <rect key="frame" x="376" y="404" width="116" height="25"/>
+                        <rect key="frame" x="342" y="402" width="116" height="25"/>
                         <buttonCell key="cell" type="roundTextured" title="Select Files" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ihf-HM-xKo">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -773,6 +776,89 @@
                             <action selector="selectFiles:" target="yew-4J-T1z" id="3A2-y5-eDK"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZi-jd-d1h">
+                        <rect key="frame" x="209" y="398" width="60" height="34"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Look in Subdirs?" id="n4Y-aS-cHX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Fj-MS-dlc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="396"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="Good: 0" identifier="1" id="Ro2-lv-1tW">
+                                <view key="view" id="mcb-tA-fr0">
+                                    <rect key="frame" x="10" y="33" width="748" height="350"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-ko-bXE">
+                                            <rect key="frame" x="1" y="3" width="744" height="344"/>
+                                            <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="Agx-gA-QpI">
+                                                <rect key="frame" x="1" y="1" width="166" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <ikImageBrowserView fixedFrame="YES" zoomValue="0.49130368232727051" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45K-Uv-Z1F">
+                                                        <rect key="frame" x="0.0" y="263" width="728" height="336"/>
+                                                        <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" outlined="YES" titled="YES" subtitled="YES"/>
+                                                        <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                                        <size key="cellSize" width="100" height="100"/>
+                                                    </ikImageBrowserView>
+                                                </subviews>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="g9I-KZ-Ehq">
+                                                <rect key="frame" x="1" y="80" width="166" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mhr-ZY-ZOz">
+                                                <rect key="frame" x="167" y="1" width="15" height="79"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Bad: 0" identifier="2" id="OeO-fn-Vuh">
+                                <view key="view" id="AAA-Pb-ql1">
+                                    <rect key="frame" x="10" y="33" width="750" height="348"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGo-Iv-a5q">
+                                            <rect key="frame" x="2" y="0.0" width="747" height="344"/>
+                                            <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="0Oj-up-DIJ">
+                                                <rect key="frame" x="1" y="1" width="166" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="0.49024826288223267" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HW6-4p-2Uv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="728" height="337"/>
+                                                        <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" outlined="YES" titled="YES" subtitled="YES"/>
+                                                        <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                                        <size key="cellSize" width="100" height="100"/>
+                                                    </ikImageBrowserView>
+                                                </subviews>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="XDb-l8-x5d">
+                                                <rect key="frame" x="1" y="80" width="166" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vEu-K1-H4E">
+                                                <rect key="frame" x="167" y="1" width="15" height="79"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vPJ-Xa-wUL">
+                        <rect key="frame" x="466" y="435" width="32" height="32"/>
+                        <shadow key="shadow" blurRadius="1">
+                            <size key="offset" width="1" height="1"/>
+                            <color key="color" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                        </shadow>
+                    </progressIndicator>
                 </subviews>
             </view>
             <point key="canvasLocation" x="1154" y="340"/>

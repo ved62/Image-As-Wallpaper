@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let conformityLevel = defaults.doubleForKey("conformityLevel")
         if conformityLevel > 0.0 {
             appController.conformityLevel = conformityLevel
-        } else { // first run
+        } else { // The first run. Take value from GUI
             appController.conformityLevel = stepper.doubleValue
         }
     }
