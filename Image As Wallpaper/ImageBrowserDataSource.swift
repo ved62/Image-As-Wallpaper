@@ -9,7 +9,7 @@
 import Quartz
 
 final class ImageBrowserDataSource: NSObject {
-    private var imageArray: [ImageBrowserItem] = []
+    var imageArray: [ImageBrowserItem] = []
 
     override func numberOfItemsInImageBrowser(aBrowser: IKImageBrowserView!) -> Int {
         return imageArray.count
@@ -18,21 +18,5 @@ final class ImageBrowserDataSource: NSObject {
     override func imageBrowser(aBrowser: IKImageBrowserView!,
         itemAtIndex index: Int) -> AnyObject! {
         return imageArray[index]
-    }
-
-    func append(imageURL: NSURL) {
-        imageArray.append(ImageBrowserItem(imageURL))
-    }
-
-    func removeObjectImageArrayAtIndex(index: Int) {
-        imageArray.removeAtIndex(index)
-    }
-
-    func removeAll() {
-        imageArray.removeAll(keepCapacity: false)
-    }
-
-    func addArray(array: [ImageBrowserItem]) {
-        imageArray += array
     }
 }

@@ -9,7 +9,8 @@
 import Quartz
 
 final class ImageBrowserItem: NSObject {
-    private let url: NSURL
+    let url: NSURL
+    let size: CGSize
 
     override func imageUID() -> String! {
         return url.path
@@ -28,16 +29,12 @@ final class ImageBrowserItem: NSObject {
     }
 
     override func imageSubtitle() -> String! {
-        var properties: String  // width, height and aspect ratio
-        if let image = CIImage(contentsOfURL: url) {
-            let size = image.extent().size
-            properties = "\(Int(size.width))x\(Int(size.height)) "
-            return properties.stringByAppendingFormat("%1.2f", size.width / size.height)
-        }
-        return "Undefined"
+        var properties = "\(Int(size.width))x\(Int(size.height)) "
+        return properties.stringByAppendingFormat("%1.2f", size.width / size.height)
     }
 
-    init(_ imageURL: NSURL) {
+    init(_ imageURL: NSURL,_ imageSize: CGSize) {
         url = imageURL
+        size = imageSize
     }
 }

@@ -14,6 +14,7 @@ import Cocoa
 final class AppController: NSObject {
     
     private dynamic var screenDimensions = String()
+    
     dynamic var conformityLevel: Double = 0.98 {
         didSet {
             progressIndicator.startAnimation(self)
@@ -26,7 +27,12 @@ final class AppController: NSObject {
 
     var screenSize: CGSize {
         get { return NSScreen.mainScreen()!.frame.size }
-        set { updateScreenDimensions(newValue, string: &screenDimensions) }
+        set {
+            updateScreenDimensions(newValue, string: &screenDimensions)
+            progressIndicator.startAnimation(self)
+            dataController.sortImagesInDataSources()
+            progressIndicator.stopAnimation(self)
+        }
     }
     
     @IBOutlet weak var dataController: DataController!
@@ -38,9 +44,7 @@ final class AppController: NSObject {
     }
     
     @IBAction func selectFiles(sender: AnyObject) {
-        progressIndicator.startAnimation(self)
         dataController.selectFiles()
-        progressIndicator.stopAnimation(self)
     }
 
     override init() {
