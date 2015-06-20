@@ -7,35 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990886E01B35A2C50041FA8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 990886DF1B35A2C50041FA8C /* Images.xcassets */; };
 		99214BFA1B299FBF008D23C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214BF91B299FBF008D23C4 /* AppDelegate.swift */; };
-		99214BFC1B299FBF008D23C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFB1B299FBF008D23C4 /* Images.xcassets */; };
 		99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99214BFD1B299FBF008D23C4 /* MainMenu.xib */; };
-		99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */; };
 		999815291B2DE736009EA519 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999815281B2DE736009EA519 /* DataController.swift */; };
 		9998152C1B2DE7B5009EA519 /* ImageBrowserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998152A1B2DE7B5009EA519 /* ImageBrowserDataSource.swift */; };
 		9998152D1B2DE7B5009EA519 /* ImageBrowserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998152B1B2DE7B5009EA519 /* ImageBrowserItem.swift */; };
 		99F376151B2C13EF00C340B4 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F376141B2C13EF00C340B4 /* AppController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		99214C051B299FBF008D23C4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 99214BEC1B299FBF008D23C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 99214BF31B299FBF008D23C4;
-			remoteInfo = "Image As Wallpaper";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		990886DF1B35A2C50041FA8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image As Wallpaper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99214BF81B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99214BF91B299FBF008D23C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99214BFB1B299FBF008D23C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		99214BFE1B299FBF008D23C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Image As WallpaperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		99214C091B299FBF008D23C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_As_WallpaperTests.swift; sourceTree = "<group>"; };
 		99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Image As Wallpaper.entitlements"; sourceTree = "<group>"; };
 		999815281B2DE736009EA519 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		9998152A1B2DE7B5009EA519 /* ImageBrowserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserDataSource.swift; sourceTree = "<group>"; };
@@ -51,13 +37,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99214C011B299FBF008D23C4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,7 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				99214BF61B299FBF008D23C4 /* Image As Wallpaper */,
-				99214C071B299FBF008D23C4 /* Image As WallpaperTests */,
 				99214BF51B299FBF008D23C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */,
-				99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,10 +59,10 @@
 		99214BF61B299FBF008D23C4 /* Image As Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				990886DF1B35A2C50041FA8C /* Images.xcassets */,
 				999815271B2DD269009EA519 /* DataModel */,
 				99214C1F1B29DE90008D23C4 /* GUI */,
 				99214C141B29A012008D23C4 /* Image As Wallpaper.entitlements */,
-				99214BFB1B299FBF008D23C4 /* Images.xcassets */,
 				99214BF71B299FBF008D23C4 /* Supporting Files */,
 			);
 			path = "Image As Wallpaper";
@@ -95,23 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				99214BF81B299FBF008D23C4 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		99214C071B299FBF008D23C4 /* Image As WallpaperTests */ = {
-			isa = PBXGroup;
-			children = (
-				99214C0A1B299FBF008D23C4 /* Image_As_WallpaperTests.swift */,
-				99214C081B299FBF008D23C4 /* Supporting Files */,
-			);
-			path = "Image As WallpaperTests";
-			sourceTree = "<group>";
-		};
-		99214C081B299FBF008D23C4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				99214C091B299FBF008D23C4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,24 +116,6 @@
 			productReference = 99214BF41B299FBF008D23C4 /* Image As Wallpaper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		99214C031B299FBF008D23C4 /* Image As WallpaperTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 99214C111B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As WallpaperTests" */;
-			buildPhases = (
-				99214C001B299FBF008D23C4 /* Sources */,
-				99214C011B299FBF008D23C4 /* Frameworks */,
-				99214C021B299FBF008D23C4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				99214C061B299FBF008D23C4 /* PBXTargetDependency */,
-			);
-			name = "Image As WallpaperTests";
-			productName = "Image As WallpaperTests";
-			productReference = 99214C041B299FBF008D23C4 /* Image As WallpaperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,10 +133,6 @@
 							};
 						};
 					};
-					99214C031B299FBF008D23C4 = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 99214BF31B299FBF008D23C4;
-					};
 				};
 			};
 			buildConfigurationList = 99214BEF1B299FBF008D23C4 /* Build configuration list for PBXProject "Image As Wallpaper" */;
@@ -211,7 +149,6 @@
 			projectRoot = "";
 			targets = (
 				99214BF31B299FBF008D23C4 /* Image As Wallpaper */,
-				99214C031B299FBF008D23C4 /* Image As WallpaperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,15 +158,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99214BFC1B299FBF008D23C4 /* Images.xcassets in Resources */,
 				99214BFF1B299FBF008D23C4 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		99214C021B299FBF008D23C4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				990886E01B35A2C50041FA8C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,23 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99214C001B299FBF008D23C4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				99214C0B1B299FBF008D23C4 /* Image_As_WallpaperTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		99214C061B299FBF008D23C4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 99214BF31B299FBF008D23C4 /* Image As Wallpaper */;
-			targetProxy = 99214C051B299FBF008D23C4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		99214BFD1B299FBF008D23C4 /* MainMenu.xib */ = {
@@ -282,6 +196,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -296,6 +211,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -319,6 +235,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Debug;
 		};
@@ -326,6 +243,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -340,6 +258,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -354,7 +273,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};
@@ -382,42 +303,6 @@
 			};
 			name = Release;
 		};
-		99214C121B299FBF008D23C4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Image As WallpaperTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image As Wallpaper.app/Contents/MacOS/Image As Wallpaper";
-			};
-			name = Debug;
-		};
-		99214C131B299FBF008D23C4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Image As WallpaperTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image As Wallpaper.app/Contents/MacOS/Image As Wallpaper";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,15 +320,6 @@
 			buildConfigurations = (
 				99214C0F1B299FBF008D23C4 /* Debug */,
 				99214C101B299FBF008D23C4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		99214C111B299FBF008D23C4 /* Build configuration list for PBXNativeTarget "Image As WallpaperTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				99214C121B299FBF008D23C4 /* Debug */,
-				99214C131B299FBF008D23C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
