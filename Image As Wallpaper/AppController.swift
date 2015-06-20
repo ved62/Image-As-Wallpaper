@@ -14,12 +14,16 @@ import Cocoa
 final class AppController: NSObject {
     
     private dynamic var screenDimensions = String()
-    
+
+    private func sortWithIndication() {
+        progressIndicator.startAnimation(self)
+        dataController.sortImagesInDataSources()
+        progressIndicator.stopAnimation(self)
+    }
+
     dynamic var conformityLevel: Double = 0.98 {
         didSet {
-            progressIndicator.startAnimation(self)
-            dataController.sortImagesInDataSources()
-            progressIndicator.stopAnimation(self)
+            sortWithIndication()
         }
     }
 
@@ -29,9 +33,7 @@ final class AppController: NSObject {
         get { return NSScreen.mainScreen()!.frame.size }
         set {
             updateScreenDimensions(newValue, string: &screenDimensions)
-            progressIndicator.startAnimation(self)
-            dataController.sortImagesInDataSources()
-            progressIndicator.stopAnimation(self)
+            sortWithIndication()
         }
     }
     

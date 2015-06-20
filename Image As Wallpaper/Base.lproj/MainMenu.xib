@@ -30,9 +30,13 @@
                 <outlet property="appController" destination="yew-4J-T1z" id="KNU-68-s4Y"/>
                 <outlet property="badImageView" destination="HW6-4p-2Uv" id="TTA-v9-ZFm"/>
                 <outlet property="badTabViewItem" destination="OeO-fn-Vuh" id="sLY-P9-UUr"/>
+                <outlet property="deleteButton" destination="MTT-eD-PYo" id="oNP-Ip-B34"/>
                 <outlet property="goodImageView" destination="45K-Uv-Z1F" id="6Gi-Rf-Syc"/>
                 <outlet property="goodTabViewItem" destination="Ro2-lv-1tW" id="L9d-Ed-zQy"/>
+                <outlet property="moveButton" destination="WIQ-YR-qVf" id="zQT-rC-JKI"/>
                 <outlet property="tabView" destination="8Fj-MS-dlc" id="PHK-o6-jj1"/>
+                <outlet property="zoomLabel" destination="ObW-j2-u9w" id="XjU-sl-hLB"/>
+                <outlet property="zoomSlider" destination="N4d-Ss-PYk" id="nYf-Gb-UE3"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -689,11 +693,11 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="72" y="329" width="768" height="480"/>
+            <rect key="contentRect" x="51" y="329" width="800" height="480"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="768" height="480"/>
+            <value key="minSize" type="size" width="800" height="480"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="768" height="480"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-ac-fxB">
@@ -709,7 +713,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pd4-6L-E9a">
                         <rect key="frame" x="18" y="409" width="108" height="17"/>
-                        <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Conformity level:" usesSingleLineMode="YES" id="Ig2-Re-ivU">
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Conformity level:" usesSingleLineMode="YES" id="Ig2-Re-ivU">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -742,7 +746,7 @@
                         </connections>
                     </stepper>
                     <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zId-Tf-XQj">
-                        <rect key="frame" x="275" y="397" width="47" height="38"/>
+                        <rect key="frame" x="267" y="397" width="47" height="38"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         <size key="cellSize" width="44" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
@@ -766,46 +770,42 @@
                             <binding destination="yew-4J-T1z" name="selectedTag" keyPath="lookInSubDirs" id="pRx-xf-4An"/>
                         </connections>
                     </matrix>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-JN-Cb1">
-                        <rect key="frame" x="342" y="402" width="116" height="25"/>
-                        <buttonCell key="cell" type="roundTextured" title="Select Files" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ihf-HM-xKo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectFiles:" target="yew-4J-T1z" id="3A2-y5-eDK"/>
-                        </connections>
-                    </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZi-jd-d1h">
-                        <rect key="frame" x="209" y="398" width="60" height="34"/>
+                        <rect key="frame" x="201" y="399" width="60" height="34"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Look in Subdirs?" id="n4Y-aS-cHX">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Fj-MS-dlc">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="396"/>
+                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="8Fj-MS-dlc">
+                        <rect key="frame" x="1" y="1" width="796" height="394"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Good: 0" identifier="1" id="Ro2-lv-1tW">
                                 <view key="view" id="mcb-tA-fr0">
-                                    <rect key="frame" x="10" y="33" width="748" height="350"/>
+                                    <rect key="frame" x="10" y="33" width="776" height="348"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-ko-bXE">
-                                            <rect key="frame" x="1" y="3" width="744" height="344"/>
-                                            <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="Agx-gA-QpI">
+                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-ko-bXE">
+                                            <rect key="frame" x="1" y="1" width="774" height="344"/>
+                                            <clipView key="contentView" copiesOnScroll="NO" id="Agx-gA-QpI">
                                                 <rect key="frame" x="1" y="1" width="166" height="79"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <ikImageBrowserView fixedFrame="YES" zoomValue="0.49130368232727051" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45K-Uv-Z1F">
+                                                    <ikImageBrowserView misplaced="YES" zoomValue="0.49130368232727051" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45K-Uv-Z1F">
                                                         <rect key="frame" x="0.0" y="263" width="728" height="336"/>
                                                         <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" outlined="YES" titled="YES" subtitled="YES"/>
                                                         <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
                                                         <size key="cellSize" width="100" height="100"/>
                                                     </ikImageBrowserView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="45K-Uv-Z1F" secondAttribute="bottom" id="3zc-NU-Ra4"/>
+                                                    <constraint firstItem="45K-Uv-Z1F" firstAttribute="leading" secondItem="Agx-gA-QpI" secondAttribute="leading" id="Nle-JV-NeC"/>
+                                                    <constraint firstItem="45K-Uv-Z1F" firstAttribute="top" secondItem="Agx-gA-QpI" secondAttribute="top" constant="6" id="gzW-75-6Bi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="45K-Uv-Z1F" secondAttribute="trailing" constant="44" id="jX7-Vb-Om2"/>
+                                                </constraints>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="g9I-KZ-Ehq">
                                                 <rect key="frame" x="1" y="80" width="166" height="15"/>
@@ -817,26 +817,38 @@
                                             </scroller>
                                         </scrollView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CwU-ko-bXE" firstAttribute="leading" secondItem="mcb-tA-fr0" secondAttribute="leading" constant="1" id="7wx-tm-GaI"/>
+                                        <constraint firstItem="CwU-ko-bXE" firstAttribute="top" secondItem="mcb-tA-fr0" secondAttribute="top" constant="3" id="EpN-4b-rDN"/>
+                                        <constraint firstAttribute="trailing" secondItem="CwU-ko-bXE" secondAttribute="trailing" constant="1" id="F4p-sp-q2q"/>
+                                        <constraint firstAttribute="bottom" secondItem="CwU-ko-bXE" secondAttribute="bottom" constant="1" id="pvW-CW-UJU"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Bad: 0" identifier="2" id="OeO-fn-Vuh">
                                 <view key="view" id="AAA-Pb-ql1">
-                                    <rect key="frame" x="10" y="33" width="750" height="348"/>
+                                    <rect key="frame" x="10" y="33" width="776" height="348"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGo-Iv-a5q">
-                                            <rect key="frame" x="2" y="0.0" width="747" height="344"/>
-                                            <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="0Oj-up-DIJ">
+                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="134.66667175292969" horizontalPageScroll="10" verticalLineScroll="160" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGo-Iv-a5q">
+                                            <rect key="frame" x="1" y="1" width="774" height="344"/>
+                                            <clipView key="contentView" copiesOnScroll="NO" id="0Oj-up-DIJ">
                                                 <rect key="frame" x="1" y="1" width="166" height="79"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="0.49024826288223267" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HW6-4p-2Uv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="728" height="337"/>
+                                                    <ikImageBrowserView autoresizesSubviews="NO" misplaced="YES" zoomValue="0.49130368232727051" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HW6-4p-2Uv">
+                                                        <rect key="frame" x="0.0" y="263" width="728" height="336"/>
                                                         <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" outlined="YES" titled="YES" subtitled="YES"/>
                                                         <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
                                                         <size key="cellSize" width="100" height="100"/>
                                                     </ikImageBrowserView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="HW6-4p-2Uv" firstAttribute="top" secondItem="0Oj-up-DIJ" secondAttribute="top" constant="6" id="6Ft-UV-J3L"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HW6-4p-2Uv" secondAttribute="bottom" id="KKG-un-ALG"/>
+                                                    <constraint firstItem="HW6-4p-2Uv" firstAttribute="leading" secondItem="0Oj-up-DIJ" secondAttribute="leading" id="hZS-08-oHA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HW6-4p-2Uv" secondAttribute="trailing" constant="44" id="k5F-bv-Tt6"/>
+                                                </constraints>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="XDb-l8-x5d">
                                                 <rect key="frame" x="1" y="80" width="166" height="15"/>
@@ -848,18 +860,75 @@
                                             </scroller>
                                         </scrollView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OGo-Iv-a5q" firstAttribute="top" secondItem="AAA-Pb-ql1" secondAttribute="top" constant="3" id="6IK-4p-eik"/>
+                                        <constraint firstAttribute="trailing" secondItem="OGo-Iv-a5q" secondAttribute="trailing" constant="1" id="rT5-co-eG5"/>
+                                        <constraint firstItem="OGo-Iv-a5q" firstAttribute="leading" secondItem="AAA-Pb-ql1" secondAttribute="leading" constant="1" id="sOc-mw-OAo"/>
+                                        <constraint firstAttribute="bottom" secondItem="OGo-Iv-a5q" secondAttribute="bottom" constant="1" id="x4N-Tm-EK5"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vPJ-Xa-wUL">
-                        <rect key="frame" x="466" y="435" width="32" height="32"/>
+                        <rect key="frame" x="384" y="435" width="32" height="32"/>
                         <shadow key="shadow" blurRadius="1">
                             <size key="offset" width="1" height="1"/>
                             <color key="color" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                         </shadow>
                     </progressIndicator>
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObW-j2-u9w">
+                        <rect key="frame" x="446" y="429" width="44" height="17"/>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Zoom:" usesSingleLineMode="YES" id="RMU-2w-ikr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider hidden="YES" horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4d-Ss-PYk">
+                        <rect key="frame" x="494" y="395" width="20" height="84"/>
+                        <sliderCell key="cell" alignment="left" minValue="0.20000000000000001" maxValue="0.90000000000000002" doubleValue="0.48999999999999999" tickMarkPosition="right" sliderType="linear" id="VYo-Ih-X0Z"/>
+                        <connections>
+                            <binding destination="ka9-He-PNk" name="value" keyPath="zoomValue" id="8Cu-tr-ceJ"/>
+                        </connections>
+                    </slider>
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MTT-eD-PYo">
+                        <rect key="frame" x="664" y="422" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Delete Selected" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8mn-ta-9ax">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="deleteSelectedFiles:" target="ka9-He-PNk" id="vkN-UU-Afu"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WIQ-YR-qVf">
+                        <rect key="frame" x="540" y="422" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Move Selected" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xiJ-JX-MNa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="moveSelectedFiles:" target="ka9-He-PNk" id="4yx-BT-mtO"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-JN-Cb1">
+                        <rect key="frame" x="322" y="404" width="116" height="25"/>
+                        <buttonCell key="cell" type="roundTextured" title="Select Files" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ihf-HM-xKo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectFiles:" target="yew-4J-T1z" id="3A2-y5-eDK"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="8Fj-MS-dlc" secondAttribute="trailing" constant="10" id="6S6-3l-sSf"/>
+                    <constraint firstItem="8Fj-MS-dlc" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="8" id="PA6-6v-0bx"/>
+                    <constraint firstItem="8Fj-MS-dlc" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="91" id="epk-CX-rLx"/>
+                    <constraint firstAttribute="bottom" secondItem="8Fj-MS-dlc" secondAttribute="bottom" constant="11" id="ggC-6U-BfZ"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="1154" y="340"/>
         </window>
