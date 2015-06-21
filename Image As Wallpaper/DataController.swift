@@ -241,7 +241,7 @@ final class DataController: NSObject {
         return true
     }
 
-    @IBAction func moveSelectedFiles(sender: NSButton) {
+    @IBAction func moveSelectedFiles(sender: AnyObject) {
         let (browserView, indexes) = getSelectedBrowser()
         if indexes.count == 0 { return }
         let destinationPath = getDestinationPath()
@@ -275,7 +275,7 @@ final class DataController: NSObject {
         return true
     }
 
-    @IBAction func deleteSelectedFiles(sender: NSButton) {
+    @IBAction func deleteSelectedFiles(sender: AnyObject) {
         let (browserView, indexes) = getSelectedBrowser()
         if indexes.count == 0 { return }
 
