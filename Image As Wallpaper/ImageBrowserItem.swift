@@ -29,7 +29,7 @@ final class ImageBrowserItem: NSObject {
     }
 
     override func imageSubtitle() -> String! {
-        var properties = "\(Int(size.width))x\(Int(size.height)) "
+        let properties = "\(Int(size.width))x\(Int(size.height)) "
         return properties.stringByAppendingFormat("%1.2f", size.width / size.height)
     }
 

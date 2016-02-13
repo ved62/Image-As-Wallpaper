@@ -7,6 +7,7 @@
 //
 
 import Quartz
+import Foundation
 
 @IBDesignable
 final class DataController: NSObject {
@@ -37,7 +38,7 @@ final class DataController: NSObject {
             imageSize = size!
         } else {
             if let image = CIImage(contentsOfURL: imageURL) {
-                imageSize = image.extent().size
+                imageSize = image.extent.size
             } else { fatalError("Unable to obtain image from \(imageURL.path)") }
         }
 
@@ -57,11 +58,11 @@ final class DataController: NSObject {
     }
 
     private func isImageFile(url: NSURL) -> Bool {
-        let allowedFileTypes = NSImage.imageTypes() as! [String]
+        let allowedFileTypes = NSImage.imageTypes() 
         if let ext = url.pathExtension {
             let typeForExt = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                ext, "public.image").takeRetainedValue() as String
-            if (find(allowedFileTypes, typeForExt) != nil) {
+                ext, "public.image")!.takeRetainedValue() as String
+            if (allowedFileTypes.indexOf(typeForExt) != nil) {
                 return true }
         }
         return false
@@ -101,7 +102,7 @@ final class DataController: NSObject {
     private func processDir(dirURL: NSURL) {
         let fileManager = NSFileManager.defaultManager()
         let options: NSDirectoryEnumerationOptions =
-            .SkipsHiddenFiles | .SkipsPackageDescendants
+            [.SkipsHiddenFiles, .SkipsPackageDescendants]
         let handler = {
             (url:NSURL!,error:NSError!) -> Bool in
             self.fileOperationFailureAlert(error)
@@ -133,10 +134,9 @@ final class DataController: NSObject {
     }
 
     private func updateCountsInLabels() {
-        tabView.tabViewType = .NoTabsBezelBorder
         goodTabViewItem.label = "Good: \(goodDataSource.imageArray.count)"
         badTabViewItem.label = "Bad: \(badDataSource.imageArray.count)"
-        tabView.tabViewType = .TopTabsBezelBorder
+        tabView.needsDisplay = true
     }
 
     private func displayImagesAndCounts() {
@@ -158,7 +158,7 @@ final class DataController: NSObject {
         fileDialog.allowsMultipleSelection=true
         fileDialog.canChooseFiles=true
         if fileDialog.runModal() == NSFileHandlingPanelOKButton {
-            imageURLs = fileDialog.URLs as! [NSURL]
+            imageURLs = fileDialog.URLs 
         }
         if imageURLs.isEmpty { return }
         goodDataSource.imageArray = []
@@ -226,7 +226,7 @@ final class DataController: NSObject {
         movePanel.canChooseFiles = false
         movePanel.allowsMultipleSelection=false
         if movePanel.runModal() == NSFileHandlingPanelOKButton {
-            return movePanel.URLs as! [NSURL]
+            return movePanel.URLs 
         }
         return []
     }
@@ -234,7 +234,10 @@ final class DataController: NSObject {
     private func moveFile(source: NSURL, _ destination: NSURL) -> Bool {
         let fileManager = NSFileManager.defaultManager()
         var moveError: NSError?
-        if !fileManager.moveItemAtURL(source, toURL: destination, error: &moveError) {
+        do {
+            try fileManager.moveItemAtURL(source, toURL: destination)
+        } catch let error as NSError {
+            moveError = error
             fileOperationFailureAlert(moveError!)
             return false
         }
@@ -252,7 +255,7 @@ final class DataController: NSObject {
             index != NSNotFound;
             index = indexes.indexLessThanIndex(index) {
                 let sourceURL = dataSource.imageArray[index].url
-                let fileName = sourceURL.path!.lastPathComponent.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+                let fileName = sourceURL.lastPathComponent!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
                 let destinationURL = NSURL(string: fileName,relativeToURL: destinationPath[0])!
                 if sourceURL != destinationURL {
                     if moveFile(sourceURL, destinationURL) {
@@ -267,8 +270,10 @@ final class DataController: NSObject {
     private func deleteFile (url: NSURL) -> Bool {
         let fileManager = NSFileManager.defaultManager()
         var deleteError: NSError?
-        if !fileManager.trashItemAtURL(url, resultingItemURL: nil,
-            error: &deleteError) {
+        do {
+            try fileManager.trashItemAtURL(url, resultingItemURL: nil)
+        } catch let error as NSError {
+            deleteError = error
             fileOperationFailureAlert(deleteError!)
             return false
         }
