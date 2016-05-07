@@ -185,7 +185,7 @@ final class DataController: NSObject {
                 filteredArray.append(item)
                 dataSource.imageArray.removeAtIndex(index)
             }
-            --index
+            index -= 1
         }
     }
 
@@ -251,9 +251,10 @@ final class DataController: NSObject {
         if destinationPath.isEmpty {return}
         let dataSource = browserView.dataSource() as! ImageBrowserDataSource
         // indexes are in accending order so we should remove from the end
-        for var index = indexes.lastIndex;
+        for index in indexes.reverse()
+/*        for var index = indexes.lastIndex;
             index != NSNotFound;
-            index = indexes.indexLessThanIndex(index) {
+            index = indexes.indexLessThanIndex(index) */ {
                 let sourceURL = dataSource.imageArray[index].url
                 let fileName = sourceURL.lastPathComponent!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
                 let destinationURL = NSURL(string: fileName,relativeToURL: destinationPath[0])!
@@ -294,9 +295,10 @@ final class DataController: NSObject {
 
         let dataSource = browserView.dataSource() as! ImageBrowserDataSource
         // indexes are in accending order so we should remove from the end
-        for var index = indexes.lastIndex;
+        for index in indexes.reverse()
+        /*        for var index = indexes.lastIndex;
             index != NSNotFound;
-            index = indexes.indexLessThanIndex(index) {
+            index = indexes.indexLessThanIndex(index) */ {
                 if deleteFile(dataSource.imageArray[index].url) {
                     dataSource.imageArray.removeAtIndex(index)
                 }
