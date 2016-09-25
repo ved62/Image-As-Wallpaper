@@ -15,9 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var appController: AppController!    
     @IBOutlet weak var stepper: NSStepper!
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let conformityLevel = defaults.doubleForKey("conformityLevel")
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let defaults = UserDefaults.standard
+        let conformityLevel = defaults.double(forKey: "conformityLevel")
         if conformityLevel > 0.0 {
             appController.conformityLevel = conformityLevel
         } else { // The first run. Take value from GUI
@@ -25,16 +25,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setDouble(appController.conformityLevel, forKey: "conformityLevel")
+    func applicationWillTerminate(_ aNotification: Notification) {
+        let defaults = UserDefaults.standard
+        defaults.set(appController.conformityLevel, forKey: "conformityLevel")
     }
 
-    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
 
-    func applicationDidChangeScreenParameters(notification: NSNotification) {
+    func applicationDidChangeScreenParameters(_ notification: Notification) {
         appController.screenSize = window.screen!.frame.size
     }
 }

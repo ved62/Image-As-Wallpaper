@@ -11,12 +11,12 @@ import Quartz
 final class ImageBrowserDataSource: NSObject {
     var imageArray: [ImageBrowserItem] = []
 
-    override func numberOfItemsInImageBrowser(aBrowser: IKImageBrowserView!) -> Int {
+    override func numberOfItems(inImageBrowser aBrowser: IKImageBrowserView!) -> Int {
         return imageArray.count
     }
 
-    override func imageBrowser(aBrowser: IKImageBrowserView!,
-        itemAtIndex index: Int) -> AnyObject! {
+    override func imageBrowser(_ aBrowser: IKImageBrowserView!,
+        itemAt index: Int) -> Any! {
         return imageArray[index]
     }
 }

@@ -9,7 +9,7 @@
 import Quartz
 
 final class ImageBrowserItem: NSObject {
-    let url: NSURL
+    let url: URL
     let size: CGSize
 
     override func imageUID() -> String! {
@@ -20,7 +20,7 @@ final class ImageBrowserItem: NSObject {
         return IKImageBrowserNSURLRepresentationType
     }
 
-    override func imageRepresentation() -> AnyObject! {
+    override func imageRepresentation() -> Any! {
         return url
     }
 
@@ -30,10 +30,10 @@ final class ImageBrowserItem: NSObject {
 
     override func imageSubtitle() -> String! {
         let properties = "\(Int(size.width))x\(Int(size.height)) "
-        return properties.stringByAppendingFormat("%1.2f", size.width / size.height)
+        return properties.appendingFormat("%1.2f", size.width / size.height)
     }
 
-    init(_ imageURL: NSURL,_ imageSize: CGSize) {
+    init(_ imageURL: URL,_ imageSize: CGSize) {
         url = imageURL
         size = imageSize
     }

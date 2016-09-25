@@ -23,21 +23,21 @@ final class DataController: NSObject {
     @IBOutlet weak var moveButton: NSButton!
     @IBOutlet weak var deleteButton: NSButton!
 
-    private dynamic var zoomValue = 0.49 {
+    fileprivate dynamic var zoomValue = 0.49 {
         didSet {
             goodImageView.setZoomValue(zoomSlider.floatValue)
             badImageView.setZoomValue(zoomSlider.floatValue)
         }
     }
-    private lazy var goodDataSource = ImageBrowserDataSource()
-    private lazy var badDataSource = ImageBrowserDataSource()
+    fileprivate lazy var goodDataSource = ImageBrowserDataSource()
+    fileprivate lazy var badDataSource = ImageBrowserDataSource()
 
-    private func checkImageAganstScreen(imageURL: NSURL, _ size: CGSize?) -> (Bool, CGSize) {
+    fileprivate func checkImageAganstScreen(_ imageURL: URL, _ size: CGSize?) -> (Bool, CGSize) {
         var imageSize: CGSize
         if (size != nil) {
             imageSize = size!
         } else {
-            if let image = CIImage(contentsOfURL: imageURL) {
+            if let image = CIImage(contentsOf: imageURL) {
                 imageSize = image.extent.size
             } else { fatalError("Unable to obtain image from \(imageURL.path)") }
         }
@@ -57,31 +57,38 @@ final class DataController: NSObject {
         return (true, imageSize) // image is good to be a wallpaper
     }
 
-    private func isImageFile(url: NSURL) -> Bool {
-        let allowedFileTypes = NSImage.imageTypes() 
-        if let ext = url.pathExtension {
+    fileprivate func isImageFile(_ url: URL) -> Bool {
+        let allowedFileTypes = NSImage.imageTypes()
+        let ext: CFString? = url.pathExtension as CFString?
+        if ext != nil {
+            //            let cfExt: CFString = ext!
             let typeForExt = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                ext, "public.image")!.takeRetainedValue() as String
-            if (allowedFileTypes.indexOf(typeForExt) != nil) {
+                ext!, "public.image" as CFString?)!.takeRetainedValue() as String
+            if (allowedFileTypes.index(of: typeForExt) != nil) {
                 return true }
         }
+
         return false
     }
 
-    private func fileOperationFailureAlert(error: NSError) {
+    fileprivate func fileOperationFailureAlert(_ error: NSError) {
         let failureAlert = NSAlert(error: error)
-        failureAlert.alertStyle = NSAlertStyle.CriticalAlertStyle
+        failureAlert.alertStyle = NSAlertStyle.critical
         failureAlert.runModal()
     }
 
-    private func checkFileExistsAndIsDirectory (url: NSURL) -> (Bool, Bool) {
-        var isDir: ObjCBool = false
-        let fileManager = NSFileManager.defaultManager()
-        let existence = fileManager.fileExistsAtPath(url.path!, isDirectory: &isDir)
-        return (existence, Bool(isDir))
+    fileprivate func checkFileExistsAndIsDirectory (_ url: URL) -> (Bool, Bool) {
+        var isDir: ObjCBool = ObjCBool(false)
+        let fileManager = FileManager.default
+        let existence = fileManager.fileExists(atPath: url.path, isDirectory: &isDir)
+        var dir: Bool = false
+        if isDir.boolValue {
+            dir = true
+        }
+        return (existence, dir)
     }
 
-    private func processFile(url: NSURL) {
+    fileprivate func processFile(_ url: URL) {
         if isImageFile(url) {
             let (good,size) = checkImageAganstScreen(url, nil)
             if good {
@@ -92,61 +99,61 @@ final class DataController: NSObject {
         }
     }
 
-    private lazy var aQueue: NSOperationQueue = {
-        let queue = NSOperationQueue()
+    fileprivate lazy var aQueue: OperationQueue = {
+        let queue = OperationQueue()
         queue.name = "File Processing Queue"
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
 
-    private func processDir(dirURL: NSURL) {
-        let fileManager = NSFileManager.defaultManager()
-        let options: NSDirectoryEnumerationOptions =
-            [.SkipsHiddenFiles, .SkipsPackageDescendants]
+    fileprivate func processDir(_ dirURL: URL) {
+        let fileManager = FileManager.default
+        let options: FileManager.DirectoryEnumerationOptions =
+            [.skipsHiddenFiles, .skipsPackageDescendants]
         let handler = {
-            (url:NSURL!,error:NSError!) -> Bool in
-            self.fileOperationFailureAlert(error)
+            (url:URL!,error:Error!) -> Bool in
+            self.fileOperationFailureAlert(error as NSError)
             return true
         }
-        let fileEnumerator = fileManager.enumeratorAtURL(dirURL, includingPropertiesForKeys: nil,
+        let fileEnumerator = fileManager.enumerator(at: dirURL, includingPropertiesForKeys: nil,
             options: options,
             errorHandler: handler)
-        while let url = fileEnumerator?.nextObject() as? NSURL {
+        while let url = fileEnumerator?.nextObject() as? URL {
             let (fileExists, isDir) = checkFileExistsAndIsDirectory(url)
-            if fileExists && !isDir {
-                aQueue.addOperationWithBlock({self.processFile(url)})
+            if fileExists && (isDir == false) {
+                aQueue.addOperation({self.processFile(url)})
             }
         }
     }
 
-    private func fillDataSources(imageURLs: [NSURL]) {
+    fileprivate func fillDataSources(_ imageURLs: [URL]) {
         for url in imageURLs {
             let (fileExists, isDir) = checkFileExistsAndIsDirectory(url)
             if fileExists {
                 if isDir {
-                    aQueue.addOperationWithBlock({self.processDir(url)})
+                    aQueue.addOperation({self.processDir(url)})
                 } else {
-                    aQueue.addOperationWithBlock({self.processFile(url)})
+                    aQueue.addOperation({self.processFile(url)})
                 }
             }
         }
         aQueue.waitUntilAllOperationsAreFinished()
     }
 
-    private func updateCountsInLabels() {
+    fileprivate func updateCountsInLabels() {
         goodTabViewItem.label = "Good: \(goodDataSource.imageArray.count)"
         badTabViewItem.label = "Bad: \(badDataSource.imageArray.count)"
         tabView.needsDisplay = true
     }
 
-    private func displayImagesAndCounts() {
+    fileprivate func displayImagesAndCounts() {
         updateCountsInLabels()
         goodImageView.reloadData()
         badImageView.reloadData()
     }
 
     func selectFiles() {
-        var imageURLs: [NSURL] = []
+        var imageURLs: [URL] = []
         let fileDialog = NSOpenPanel()
         var title = "Select Image Files"
         if appController.lookInSubDirs == 1 {
@@ -158,7 +165,7 @@ final class DataController: NSObject {
         fileDialog.allowsMultipleSelection=true
         fileDialog.canChooseFiles=true
         if fileDialog.runModal() == NSFileHandlingPanelOKButton {
-            imageURLs = fileDialog.URLs 
+            imageURLs = fileDialog.urls 
         }
         if imageURLs.isEmpty { return }
         goodDataSource.imageArray = []
@@ -166,24 +173,24 @@ final class DataController: NSObject {
         appController.progressIndicator.startAnimation(self)
         fillDataSources(imageURLs)
         appController.progressIndicator.stopAnimation(self)
-        goodImageView.setDataSource(goodDataSource)
-        badImageView.setDataSource(badDataSource)
+        goodImageView.dataSource = goodDataSource
+        badImageView.dataSource = badDataSource
         displayImagesAndCounts()
-        zoomLabel.hidden = false
-        zoomSlider.hidden = false
-        deleteButton.hidden = false
-        moveButton.hidden = false
+        zoomLabel.isHidden = false
+        zoomSlider.isHidden = false
+        deleteButton.isHidden = false
+        moveButton.isHidden = false
     }
 
-    private func checkAndUpdateDataSource(dataSource: ImageBrowserDataSource,  keep: Bool, inout filteredArray: [ImageBrowserItem]) {
+    fileprivate func checkAndUpdateDataSource(_ dataSource: ImageBrowserDataSource,  keep: Bool, filteredArray: inout [ImageBrowserItem]) {
         var item: ImageBrowserItem
         var index = dataSource.imageArray.count - 1
         while index >= 0 {
             item = dataSource.imageArray[index]
-            let (result, _) = checkImageAganstScreen(item.url, item.size)
+            let (result, _) = checkImageAganstScreen(item.url as URL, item.size)
             if result != keep {
                 filteredArray.append(item)
-                dataSource.imageArray.removeAtIndex(index)
+                dataSource.imageArray.remove(at: index)
             }
             index -= 1
         }
@@ -194,14 +201,14 @@ final class DataController: NSObject {
             badDataSource.imageArray.isEmpty { return }
         var badTempArray: [ImageBrowserItem] = []
         var goodTempArray: [ImageBrowserItem] = []
-        let aQueue = NSOperationQueue()
+        let aQueue = OperationQueue()
         // process existing data sources in paralel
-        aQueue.addOperationWithBlock({
+        aQueue.addOperation({
             // save images to be moved to the Bad Data Source
             // and remove them from Good data source
             self.checkAndUpdateDataSource(self.goodDataSource, keep: true, filteredArray: &badTempArray)
         })
-        aQueue.addOperationWithBlock({
+        aQueue.addOperation({
             // save images to be moved to the Good Data Source
             // and remove them from Bad data source
             self.checkAndUpdateDataSource(self.badDataSource, keep: false, filteredArray: &goodTempArray)
@@ -212,12 +219,12 @@ final class DataController: NSObject {
         displayImagesAndCounts()
     }
 
-    private func getSelectedBrowser() -> (IKImageBrowserView,  NSIndexSet) {
+    fileprivate func getSelectedBrowser() -> (IKImageBrowserView,  IndexSet) {
         let browser = tabView.selectedTabViewItem == goodTabViewItem ? goodImageView : badImageView
-        return (browser,browser.selectionIndexes())
+        return (browser!,browser!.selectionIndexes())
     }
     
-    private func getDestinationPath() -> [NSURL] {
+    fileprivate func getDestinationPath() -> [URL] {
         let movePanel = NSOpenPanel()
         movePanel.message = "Select Destination"
         movePanel.prompt = "Choose"
@@ -226,16 +233,16 @@ final class DataController: NSObject {
         movePanel.canChooseFiles = false
         movePanel.allowsMultipleSelection=false
         if movePanel.runModal() == NSFileHandlingPanelOKButton {
-            return movePanel.URLs 
+            return movePanel.urls 
         }
         return []
     }
 
-    private func moveFile(source: NSURL, _ destination: NSURL) -> Bool {
-        let fileManager = NSFileManager.defaultManager()
+    fileprivate func moveFile(_ source: URL, _ destination: URL) -> Bool {
+        let fileManager = FileManager.default
         var moveError: NSError?
         do {
-            try fileManager.moveItemAtURL(source, toURL: destination)
+            try fileManager.moveItem(at: source, to: destination)
         } catch let error as NSError {
             moveError = error
             fileOperationFailureAlert(moveError!)
@@ -244,23 +251,23 @@ final class DataController: NSObject {
         return true
     }
 
-    @IBAction func moveSelectedFiles(sender: AnyObject) {
+    @IBAction func moveSelectedFiles(_ sender: AnyObject) {
         let (browserView, indexes) = getSelectedBrowser()
         if indexes.count == 0 { return }
         let destinationPath = getDestinationPath()
         if destinationPath.isEmpty {return}
-        let dataSource = browserView.dataSource() as! ImageBrowserDataSource
+        let dataSource = browserView.dataSource as! ImageBrowserDataSource
         // indexes are in accending order so we should remove from the end
-        for index in indexes.reverse()
+        for index in indexes.reversed()
 /*        for var index = indexes.lastIndex;
             index != NSNotFound;
             index = indexes.indexLessThanIndex(index) */ {
                 let sourceURL = dataSource.imageArray[index].url
-                let fileName = sourceURL.lastPathComponent!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
-                let destinationURL = NSURL(string: fileName,relativeToURL: destinationPath[0])!
-                if sourceURL != destinationURL {
-                    if moveFile(sourceURL, destinationURL) {
-                        dataSource.imageArray.removeAtIndex(index)
+                let fileName = sourceURL.lastPathComponent.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)!
+                let destinationURL = URL(string: fileName,relativeTo: destinationPath[0])!
+                if sourceURL as URL != destinationURL {
+                    if moveFile(sourceURL as URL, destinationURL) {
+                        dataSource.imageArray.remove(at: index)
                     }
                 }
         }
@@ -268,11 +275,11 @@ final class DataController: NSObject {
         updateCountsInLabels()
     }
 
-    private func deleteFile (url: NSURL) -> Bool {
-        let fileManager = NSFileManager.defaultManager()
+    fileprivate func deleteFile (_ url: URL) -> Bool {
+        let fileManager = FileManager.default
         var deleteError: NSError?
         do {
-            try fileManager.trashItemAtURL(url, resultingItemURL: nil)
+            try fileManager.trashItem(at: url, resultingItemURL: nil)
         } catch let error as NSError {
             deleteError = error
             fileOperationFailureAlert(deleteError!)
@@ -281,26 +288,26 @@ final class DataController: NSObject {
         return true
     }
 
-    @IBAction func deleteSelectedFiles(sender: AnyObject) {
+    @IBAction func deleteSelectedFiles(_ sender: AnyObject) {
         let (browserView, indexes) = getSelectedBrowser()
         if indexes.count == 0 { return }
 
         let warningAlert = NSAlert()
-        warningAlert.alertStyle = NSAlertStyle.WarningAlertStyle
+        warningAlert.alertStyle = NSAlertStyle.warning
         var messageText = "\(indexes.count) file"
         if indexes.count > 1 { messageText += "s" }
         messageText += " will be moved to Trash!"
         warningAlert.messageText = messageText
         warningAlert.runModal()
 
-        let dataSource = browserView.dataSource() as! ImageBrowserDataSource
+        let dataSource = browserView.dataSource as! ImageBrowserDataSource
         // indexes are in accending order so we should remove from the end
-        for index in indexes.reverse()
+        for index in indexes.reversed()
         /*        for var index = indexes.lastIndex;
             index != NSNotFound;
             index = indexes.indexLessThanIndex(index) */ {
-                if deleteFile(dataSource.imageArray[index].url) {
-                    dataSource.imageArray.removeAtIndex(index)
+                if deleteFile(dataSource.imageArray[index].url as URL) {
+                    dataSource.imageArray.remove(at: index)
                 }
         }
         browserView.reloadData()

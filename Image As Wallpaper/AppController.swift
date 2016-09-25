@@ -13,9 +13,9 @@ import Cocoa
 @IBDesignable
 final class AppController: NSObject {
     
-    private dynamic var screenDimensions = String()
+    fileprivate dynamic var screenDimensions = String()
 
-    private func sortWithIndication() {
+    fileprivate func sortWithIndication() {
         progressIndicator.startAnimation(self)
         dataController.sortImagesInDataSources()
         progressIndicator.stopAnimation(self)
@@ -30,7 +30,7 @@ final class AppController: NSObject {
     dynamic var lookInSubDirs: Int = 1
 
     var screenSize: CGSize {
-        get { return NSScreen.mainScreen()!.frame.size }
+        get { return NSScreen.main()!.frame.size }
         set {
             updateScreenDimensions(newValue, string: &screenDimensions)
             sortWithIndication()
@@ -40,12 +40,12 @@ final class AppController: NSObject {
     @IBOutlet weak var dataController: DataController!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
-    private func updateScreenDimensions(size: CGSize, inout string: String) {
+    fileprivate func updateScreenDimensions(_ size: CGSize, string: inout String) {
         string = "Screen Dimensions: \(Int(size.width)) x \(Int(size.height)) "
-        string = string.stringByAppendingFormat(" Aspect ratio: %1.2f", size.width / size.height)
+        string = string.appendingFormat(" Aspect ratio: %1.2f", size.width / size.height)
     }
     
-    @IBAction func selectFiles(sender: AnyObject) {
+    @IBAction func selectFiles(_ sender: AnyObject) {
         dataController.selectFiles()
     }
 

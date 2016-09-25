@@ -83,5 +83,53 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Image As Wallpaper/DataController.swift"
+            timestampString = "496494419.786021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "checkFileExistsAndIsDirectory(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of Image_As_Wallpaper.DataController.(processDir in _4B0433203C9A9CAC7FC5AFD308B57636) (Foundation.URL) -&gt; ()"
+                  moduleName = "Image As Wallpaper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ved/Development/Image%20As%20Wallpaper/Image%20As%20Wallpaper/DataController.swift"
+                  timestampString = "496494688.725778"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "993">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of Image_As_Wallpaper.DataController.(fillDataSources in _4B0433203C9A9CAC7FC5AFD308B57636) (Swift.Array&lt;Foundation.URL&gt;) -&gt; ()"
+                  moduleName = "Image As Wallpaper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ved/Development/Image%20As%20Wallpaper/Image%20As%20Wallpaper/DataController.swift"
+                  timestampString = "496494688.727672"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "283">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
